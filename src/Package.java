@@ -6,20 +6,41 @@ public class Package {
     private double height;
     private double width;
 
-    public boolean checkWeight(double weight){
+    public Package(Address o, Address d, double weight, double l, double h, double w){
+        origin = o;
+        destination = d;
+        this.weight = weight;
+        length = l;
+        height = h;
+        width = w;
+    }
+
+    public static boolean checkWeight(double weight){
         if(weight < 0.1){
             return false;
         }
         return true;
     }
 
-    public boolean checkMeasurements(double l, double h, double w){
-        if(l < 2 || h < 2 || w < 2){
+    public static boolean checkLength(double l){
+        if(l < 2){
             return false;
         }
         return true;
     }
 
+    public static boolean checkHeight(double h){
+        if( h < 2){
+            return false;
+        }
+        return true;
+    }
+    public static boolean checkWidth(double w){
+        if(w < 2){
+            return false;
+        }
+        return true;
+    }
     public Address getOrigin() {
         return origin;
     }
