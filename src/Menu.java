@@ -1,4 +1,5 @@
 import java.text.DecimalFormat;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Menu {
@@ -43,6 +44,7 @@ public class Menu {
             DecimalFormat df = new DecimalFormat("0.00");
             System.out.println("Cost: $" + df.format((PostageCalculator.calculatePackage(Integer.parseInt(origin), Integer.parseInt(destination), Double.parseDouble(weight), Double.parseDouble(height), Double.parseDouble(length), Double.parseDouble(width)))));
         }
+
     }
 }
 
