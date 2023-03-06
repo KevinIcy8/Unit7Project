@@ -44,6 +44,33 @@ public class Menu {
             DecimalFormat df = new DecimalFormat("0.00");
             System.out.println("Cost: $" + df.format((PostageCalculator.calculatePackage(Integer.parseInt(origin), Integer.parseInt(destination), Double.parseDouble(weight), Double.parseDouble(height), Double.parseDouble(length), Double.parseDouble(width)))));
         }
+        else if(choice.equals("2")){
+            System.out.print("How many packages would you like to simulate? ");
+            String numOfPack = s.nextLine();
+            System.out.println("Randomly generated packages info: ");
+            PackageSimulator simulator = new PackageSimulator();
+            simulator.generatePackages(Integer.parseInt(numOfPack));
+            for(int i = 0; i < simulator.getPackages().size();i++){
+                System.out.println("Package " + (i+1) + ": ____________________________________________");
+                System.out.println(simulator.getSimulationInfo(i));
+            }
+            System.out.println("____________________________________________");
+            System.out.println("Total cost of all packages: " + simulator.generateTotalCost());
+        }
+        else if(choice.equals("3")){
+            System.out.println();
+            System.out.println("How we calculate our packages: \n" +
+                    "The base cost is $3.75\n" +
+                    "We add 5 cents for each tenth of a pound\n" +
+                    "We then divide the difference in county codes by 100 and add that to calculate the final total\n" +
+                    "The county code is the first 3 digits of the zip code\n");
+            System.out.println("Accounting for oversize packages:\n" +
+                    "Any package that exceeds a combined 36 inches will cost an additional 10 cents per inch.\n" +
+                    "Additionally, packages that are more than 40 pounds will be charged 10 cents per tenth of a pound over the 40 pound limit.\n");
+
+            System.out.println("Example: \nWeight of package: 1 pound\nOrigin zipcode: 20000\nDestination zipcode: 10000\n" +
+                    "3.75 + (1/0.1) * 0.05 + (200-100)/100");
+        }
 
     }
 }
